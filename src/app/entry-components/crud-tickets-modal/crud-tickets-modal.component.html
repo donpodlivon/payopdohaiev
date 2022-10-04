@@ -1,0 +1,37 @@
+<div class="modal-wrapper">
+  <form class="create-form" [formGroup]="ticketForm">
+    <mat-form-field class="form-el-wrapper" appearance="outline">
+      <input matInput placeholder="Request name" formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field class="form-el-wrapper" appearance="outline">
+      <mat-label>Departments</mat-label>
+      <mat-select>
+        <mat-option
+          *ngFor="let department of departmentList"
+          [value]="department.value"
+        >
+          {{ department.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-el-wrapper" appearance="outline">
+      <input matInput placeholder="Message" formControlName="messages" />
+    </mat-form-field>
+
+    <mat-form-field class="form-el-wrapper" appearance="outline">
+      <input matInput placeholder="Attachments" formControlName="attachments" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit-btn"
+      (click)="onFormSubmit()"
+      [disabled]="!ticketForm.valid"
+    >
+      Send Ticket
+    </button>
+  </form>
+</div>
